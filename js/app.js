@@ -10,7 +10,7 @@ const menu = [
 	{
 		id: 2,
 		title: "diner double",
-		category: "lunch",
+		category: "dinner",
 		price: 13.99,
 		img: "./img/item-2.jpeg",
 		desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `
@@ -70,7 +70,41 @@ const menu = [
 		price: 16.99,
 		img: "./img/item-9.jpeg",
 		desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`
+	},
+	{
+		id: 10,
+		title: "steak supper",
+		category: "dinner",
+		price: 16.99,
+		img: "./img/item-10.jpeg",
+		desc: `fragenbush famo orangutan authentic semiotics. On the live ting regista aquafina bomberos garbanzo beans colchoneros hansig clash of clans.`
 	}
 ];
 
-console.log(menu);
+let container = document.querySelector(".container");
+
+const renderItems = () => {
+	let menuDisplayArr = menu.map((currentItem) => {
+		return `
+        <article class="menu__item">
+            <div class="img-container">
+                <img src="${currentItem.img}" class="${currentItem.img}">
+            </div>
+            <div class="menu__item--info">
+                <div class="title-n-price">
+                    <h4 class="title">${currentItem.title}</h4>
+                    <h5 class="price">${currentItem.price}</h5>
+                </div>
+                <p class="text">
+                ${currentItem.desc}
+                </p>
+            </div>
+        </article>`;
+	});
+	let menuDisplay = menuDisplayArr.join("");
+	container.innerHTML = menuDisplay;
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+	renderItems();
+});
